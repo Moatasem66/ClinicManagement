@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Clinic.UI.Models.Schedules.ScheduleViewModel>
+
+@{
+    ViewData["Title"] = "Schedules";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-dark">All Schedules</h2>
+        <a asp-action="Create" class="btn btn-outline-primary">
+            <i class="fas fa-plus"></i> Add New Schedule
+        </a>
+    </div>
+    @if (ViewData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var schedule in Model)
+                    {
+                        <tr>
+                            <td>@schedule.DoctorName</td>
+                            <td>@schedule.StartDate.ToString("yyyy-MM-dd")</td>
+                            <td>@schedule.EndDate.ToString("yyyy-MM-dd")</td>
+                            <td>@schedule.StartTime.ToString("hh\\:mm")</td>
+                            <td>@schedule.EndTime.ToString("hh\\:mm")</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Details" asp-route-id="@schedule.Id" class="btn btn-sm btn-warning me-1">
+                                        <i class="fas fa-eye"></i> View
+                                    </a>
+                                    <a asp-action="Update" asp-route-id="@schedule.Id" class="btn btn-sm btn-success me-1">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@schedule.Id" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            <i class="fas fa-exclamation-triangle fa-2x mb-2"></i>
+            <h5>No schedules available.</h5>
+            <p>Please create a new schedule using the button above.</p>
+        </div>
+    }
+</div>

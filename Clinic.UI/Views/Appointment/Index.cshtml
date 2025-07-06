@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AppointmentViewModel>
+
+@{
+    ViewData["Title"] = "Appointment List";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-dark">Appointments</h2>
+        <a asp-action="Create" class="btn btn-outline-primary">
+            <i class="fas fa-plus"></i> Add New Appointment
+        </a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Phone Number</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Doctor</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var appointment in Model)
+                    {
+                        <tr>
+                            <td>@appointment.PatientName</td>
+                            <td>@appointment.PhoneNumber</td>
+                            <td>@appointment.Date.ToString("dd/MM/yyyy")</td>
+                            <td>@appointment.StartTime.ToString("hh\\:mm")</td>
+                            <td>@appointment.EndTime.ToString("hh\\:mm")</td>
+                            <td>@appointment.DoctorName</td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a asp-action="Details" asp-route-id="@appointment.Id" class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@appointment.Id" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            <i class="fas fa-exclamation-circle fa-2x"></i>
+            <h5 class="mt-2">No appointments found</h5>
+            <p>Click the "Add New Appointment" button to create one.</p>
+        </div>
+    }
+</div>

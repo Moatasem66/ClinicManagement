@@ -1,0 +1,34 @@
+﻿@model ClinicViewModel
+
+@{
+    ViewData["Title"] = "Clinic Details";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-body-secondary">
+            <h4 class="mb-0">
+                Clinic Details
+            </h4>
+        </div>
+
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 fw-semibold">Clinic Name:</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3 fw-semibold">Address:</dt>
+                <dd class="col-sm-9">@Model.Address</dd>
+
+                <dt class="col-sm-3 fw-semibold">Phone Number:</dt>
+                <dd class="col-sm-9">@Model.PhoneNumber</dd>
+            </dl>
+
+            <div class="mt-4 d-flex justify-content-end">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Clinic Home";
+}
+
+<div class="container py-5">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-dark fw-bold">Welcome to Our Clinic</h1>
+        <p class="lead text-muted">Providing quality healthcare with care, compassion, and commitment.</p>
+        <a asp-controller="Appointment" asp-action="Create" class="btn btn-outline-primary btn-lg mt-3 shadow">
+            Book an Appointment
+        </a>
+    </div>
+
+    <!-- Services Section -->
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-heart-pulse-fill display-4 text-danger"></i>
+                    <h5 class="card-title mt-3">General Medicine</h5>
+                    <p class="card-text text-muted">Consult with experienced physicians for routine checkups and care.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-eyedropper display-4 text-success"></i>
+                    <h5 class="card-title mt-3">Diagnostics</h5>
+                    <p class="card-text text-muted">On-site lab and diagnostic services for accurate and quick results.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow h-100">
+                <div class="card-body">
+                    <i class="bi bi-people-fill display-4 text-primary"></i>
+                    <h5 class="card-title mt-3">Specialist Doctors</h5>
+                    <p class="card-text text-muted">Access to top specialists in pediatrics, cardiology, dermatology, and more.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="text-center mt-5">
+        <h4 class="text-dark">Need help or have questions?</h4>
+        <p class="text-muted">
+            Call us at <strong>01000114145</strong> or
+            <a asp-controller="Contact" asp-action="Index">Contact us</a> online.
+        </p>
+    </div>
+</div>
