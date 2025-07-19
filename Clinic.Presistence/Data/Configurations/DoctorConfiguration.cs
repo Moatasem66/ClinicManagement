@@ -29,6 +29,6 @@ public class DoctorConfiguration : IEntityTypeConfiguration<Doctor>
         builder.HasMany(d => d.Schedules)
                .WithOne(s => s.Doctor)
                .HasForeignKey(s => s.DoctorId)
-               .OnDelete(DeleteBehavior.Cascade);
+               .OnDelete(DeleteBehavior.Restrict);
     }
 }

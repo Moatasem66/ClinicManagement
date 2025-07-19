@@ -9,7 +9,7 @@ public class CreateUpdateClinicViewModel
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Address is required")]
-    [StringLength(200, ErrorMessage = "Address cannot be more than 200 characters")]
+    [StringLength(maximumLength: 200, ErrorMessage = "Address cannot be more than 200 characters")]
     public string Address { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Phone number is required")]
