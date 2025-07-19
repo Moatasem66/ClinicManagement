@@ -20,7 +20,6 @@ public class CreateUpdateAppointmentViewModel
     public TimeOnly StartTime { get; set; }
 
     [Required(ErrorMessage = "End time is required.")]
-    [Compare(nameof(StartTime), ErrorMessage = "End time must be after start time.")]
     public TimeOnly EndTime { get; set; }
 
     [Range(1, int.MaxValue, ErrorMessage = "Please select a doctor.")]
